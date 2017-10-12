@@ -72,7 +72,7 @@ router.get('/', function (req, res) {
 
 // route for showing the profile page
 router.get('/profile', isLoggedIn, function (req, res) {
-  res.render('profile.ejs', {
+  res.render('profile', {  //took out the .ejs
     user: req.user // get the user out of session and pass to template
   });
 });
