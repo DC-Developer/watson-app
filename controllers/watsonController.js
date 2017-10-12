@@ -2,14 +2,14 @@ var express = require("express");
 
 var router = express.Router();
 
-// Import the model (cat.js) to use its database functions.
+// Import the model to use its database functions.
 var watson = require("../models/watsonModel.js");
 
 // Create all our routes and set up logic within those routes where required.
 router.get("/", function(req, res) {
   watson.all(function(data) {
     var hbsObject = {
-      watson: data
+      watson: data,
     };
     console.log(hbsObject);
     res.render("index", hbsObject);
@@ -21,10 +21,10 @@ router.post("/api/watson", function(req, res) {
   watson.create([
     "name"
   ], [
-     req.body.name
+    req.body.name
   ], function(result) {
     // Send back the ID of the new quote
-    res.redirect("/?id=" + result.insertId );
+    res.redirect("/?id=" + result.insertId);
   });
 });
 
@@ -35,14 +35,13 @@ router.post("/api/watson/:id", function(req, res) {
   console.log("condition", condition);
 
   watson.update({
-    listened: req.body.name
+    name: req.body.name
   }, condition, function(result) {
     if (result.changedRows == 0) {
       // If no rows were changed, then the ID must not exist, so 404
       res.redirect('/#404')
     } else {
       res.redirect('/');
-      
     }
   });
 });
