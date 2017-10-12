@@ -1,9 +1,8 @@
 var express = require("express");
 var bodyParser = require("body-parser");
 
-
 // Sets an initial port. We"ll use this later in our listener
-var PORT = process.env.PORT || 3306;
+var PORT = process.env.PORT || 3000;
 
 var app = express();
 
@@ -11,6 +10,7 @@ var app = express();
 app.use(express.static("public"));
 
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 // Set Handlebars.
 var exphbs = require("express-handlebars");
