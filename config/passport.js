@@ -1,15 +1,19 @@
 // config/passport.js
 
 // load all the things we need
-var LocalStrategy = require('passport-local').Strategy;
+// var LocalStrategy = require('passport-local').Strategy;
 
 var GoogleStrategy = require('passport-google-oauth2').Strategy;
+
+var configAuth = require('../googlekeys.js');
 
 // load up the user model
 // var User = require('../app/models/user');
 
+
+
 // load the auth variables
-var configAuth = require('./auth');
+// var configAuth = require('./auth');
 
 module.exports = function (passport) {
 

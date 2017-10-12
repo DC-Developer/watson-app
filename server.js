@@ -1,6 +1,6 @@
 var express = require("express");
 var bodyParser = require("body-parser");
-
+var passport = require('passport');
 
 // Sets an initial port. We"ll use this later in our listener
 var PORT = process.env.PORT || 3000;
@@ -19,7 +19,7 @@ var exphbs = require("express-handlebars");
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
-var passport = require('./config/passport')('passport');
+require('./config/passport')(passport);
 
 // Import routes and give the server access to them.
 var router = require("./controllers/watsonController.js");

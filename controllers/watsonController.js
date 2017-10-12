@@ -2,6 +2,8 @@ var express = require("express");
 
 var router = express.Router();
 
+var passport = require('passport');
+
 // Import the model to use its database functions.
 var watson = require("../models/watsonModel.js");
 
