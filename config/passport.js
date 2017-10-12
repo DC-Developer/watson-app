@@ -1,22 +1,3 @@
-<<<<<<< HEAD
-//const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
-
-//require the model users file
-//const User = require("/models/user");
-
-//require the auth file
-//configAuth = require('./auth');
-
-/*
-module.exports = function(passport){
-
-    passport.serializeUser(function(user,done){
-        done(null, user.id);
-    });
-
-    passport.deserializeUser(function(id, done){
-        User.findById(id, function(err, user){
-=======
 // config/passport.js
 
 // load all the things we need
@@ -25,7 +6,7 @@ var LocalStrategy = require('passport-local').Strategy;
 var GoogleStrategy = require('passport-google-oauth2').Strategy;
 
 // load up the user model
-var User = require('../app/models/user');
+// var User = require('../app/models/user');
 
 // load the auth variables
 var configAuth = require('./auth');
@@ -40,79 +21,40 @@ module.exports = function (passport) {
     // used to deserialize the user
     passport.deserializeUser(function (id, done) {
         User.findById(id, function (err, user) {
->>>>>>> 5e2bb5441183ebdb533f06ed6dbf03c009d515a2
             done(err, user);
         });
     });
 
-<<<<<<< HEAD
-    passport.use('local-signup', new LocalStrategy({
-        usernameField: 'email',
-        passwordField: 'password',
-        passReqToCallback: true
-    },
-    function(req, email, password, done){
-        process.nextTick(function(){
-            //the first parameter in findOne searches the databse for the username
-            User.findOne({'local.username': email}, function(err,user){
-                if(err)
-                    return done(err);
-                if(user){
-                    return done(null, false, req.flash('signupMessage', 'That email already exists'));
-                } else{
-                    var newUser = new User();
-                    newUser.local.username = email;
-                    newUser.local.password = newUser.generateHash(password);
+    // passport.use('local-signup', new LocalStrategy({
+    //     usernameField: 'email',
+    //     passwordField: 'password',
+    //     passReqToCallback: true
+    // },
+    // function(req, email, password, done){
+    //     process.nextTick(function(){
+    //         //the first parameter in findOne searches the databse for the username
+    //         User.findOne({'local.username': email}, function(err,user){
+    //             if(err)
+    //                 return done(err);
+    //             if(user){
+    //                 return done(null, false, req.flash('signupMessage', 'That email already exists'));
+    //             } else{
+    //                 var newUser = new User();
+    //                 newUser.local.username = email;
+    //                 newUser.local.password = newUser.generateHash(password);
 
-                    newUser.save(function(err){
-                        if(err)
-                            throw err;
-                        return done(null, newUser);
-                    })
-                }
+    //                 newUser.save(function(err){
+    //                     if(err)
+    //                         throw err;
+    //                     return done(null, newUser);
+    //                 })
+    //             }
                     
 
-            });
-        });
-    }
-    }))
-}
+    //         });
+    //     });
+    // }));
 
-
-passport.use(new googleStrategy({
-    clientID: configAuth.googleAuth.clientID,
-    clientSecret: configAuth.googleAuth.clientSecret, 
-    callbackURL: configAuth.googleAuth.callbackURL
-},
-function(accessToken, refreshToken, profile, done){
-    process.nextTick(function(){
-        User.findOne({'google.id': profile.id}, function(err, user){
-            if(err)
-                return done(err);
-            if(user)
-                return done(null, user);
-            else{
-                var newUser = new User();
-                newUser.google.id = profile.id;
-                newUser.google.token = accessToken;
-                newUser.google.name = profile.displayName;
-                newUser.google.email = profile.email[0].value;
-
-                newUser.save(function(err){
-                    if(err)
-                        throw err;
-                    return done(null, newUser);
-                })
-                console.log(profile);
-            }    
-
-        })
-    })
-}
-));
-
-*/
-=======
     // code for login (use('local-login', new LocalStategy))
     // code for signup (use('local-signup', new LocalStategy))
     // code for facebook (use('facebook', new FacebookStrategy))
@@ -164,6 +106,4 @@ function(accessToken, refreshToken, profile, done){
             });
 
         }));
-
 };
->>>>>>> 5e2bb5441183ebdb533f06ed6dbf03c009d515a2
