@@ -9,7 +9,7 @@ var watson = require("../models/watsonModel.js");
 
 
 // TEST ROUTE FOR WATSON
-router.get("/watsontest", function (req, res) {
+router.get("/w", function (req, res) {
   var watsonFuncs = require("../public/assets/js/watson.js");
   watsonFuncs.test1(12, 'How do bees fly', function (data) {
     console.log("Returned data.length", data.length);
