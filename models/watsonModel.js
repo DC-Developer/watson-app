@@ -27,7 +27,7 @@ var watson = {
   delete: function(id, cb) {
     
     let conditionString = "id = " + id;
-    orm.delete("test", conditionString, function (res) {
+    orm.delete("topics", id, function (res) {
       cb(res);
     });
   }

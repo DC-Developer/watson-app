@@ -8,7 +8,7 @@ var passport = require('passport');
 var watson = require("../models/watsonModel.js");
 
 // Create all our routes and set up logic within those routes where required.
-router.get("/search", function(req, res) {
+router.get("/", function(req, res) {
   watson.all(function(data) {
     var hbsObject = {
       watson: data,
@@ -61,7 +61,7 @@ router.post("/api/watson/delete/:id", function(req, res) {
 });
 
 // route for home page
-router.get('/', function (req, res) {
+router.get('/auth', function (req, res) {
   res.render('auth'); // load the file
 });
 
