@@ -91,7 +91,7 @@ var orm = {
   delete: function(table, id, cb) {
     var queryString = "DELETE FROM " + table;
     
-        queryString += " WHERE ";
+        queryString += " WHERE id =";
         queryString += id;
     
         console.log(queryString);
