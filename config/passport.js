@@ -1,7 +1,7 @@
 // config/passport.js
 
 // load all the things we need
-// var LocalStrategy = require('passport-local').Strategy;
+var LocalStrategy = require('passport-local').Strategy;
 
 var GoogleStrategy = require('passport-google-oauth2').Strategy;
 
@@ -29,35 +29,35 @@ module.exports = function (passport) {
         });
     });
 
-    // passport.use('local-signup', new LocalStrategy({
-    //     usernameField: 'email',
-    //     passwordField: 'password',
-    //     passReqToCallback: true
-    // },
-    // function(req, email, password, done){
-    //     process.nextTick(function(){
-    //         //the first parameter in findOne searches the databse for the username
-    //         User.findOne({'local.username': email}, function(err,user){
-    //             if(err)
-    //                 return done(err);
-    //             if(user){
-    //                 return done(null, false, req.flash('signupMessage', 'That email already exists'));
-    //             } else{
-    //                 var newUser = new User();
-    //                 newUser.local.username = email;
-    //                 newUser.local.password = newUser.generateHash(password);
+    passport.use('local-signup', new LocalStrategy({
+        usernameField: 'email',
+        passwordField: 'password',
+        passReqToCallback: true
+    },
+    function(req, email, password, done){
+        process.nextTick(function(){
+            //the first parameter in findOne searches the databse for the username
+            User.findOne({'local.username': email}, function(err,user){
+                if(err)
+                    return done(err);
+                if(user){
+                    return done(null, false, req.flash('signupMessage', 'That email already exists'));
+                } else{
+                    var newUser = new User();
+                    newUser.local.username = email;
+                    newUser.local.password = newUser.generateHash(password);
 
-    //                 newUser.save(function(err){
-    //                     if(err)
-    //                         throw err;
-    //                     return done(null, newUser);
-    //                 })
-    //             }
+                    newUser.save(function(err){
+                        if(err)
+                            throw err;
+                        return done(null, newUser);
+                    })
+                }
                     
 
-    //         });
-    //     });
-    // }));
+            });
+        });
+    }));
 
     // code for login (use('local-login', new LocalStategy))
     // code for signup (use('local-signup', new LocalStategy))
