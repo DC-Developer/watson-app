@@ -71,8 +71,21 @@
      </script>
 
 
+     {{#each watson}}
+
+
+
+    <button action="/api/watson" method="POST">Topic: {{name}}</button>    {{!-- <span> {{this.id}}</span><span>{{this.name}}</span>    --}}
+    <form action="/api/watson/delete/{{this.id}}" method="POST">
+        <button type="submit" id="{{this.id}}" class="delete">delete</button>
+    </form>
+
+
+    {{/each}}
+
+
     
-    <div class="container page-body chart-body">
+    {{!-- <div class="container page-body chart-body">
         <div id="results-box">
             <div class="row">
                 <h3 id="school-name">School Name</h3>
@@ -128,7 +141,7 @@
     <div class="toTop">
         <a href="#" class="toTop badge badge-info">Return to Top</a>
     </div>
-    <div class="push"></div>
+    <div class="push"></div> --}}
 
     <!-- F I X E D   F O O T E R -->
     <div class="navbar navbar-default fixed-footer">
