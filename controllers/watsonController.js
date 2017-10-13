@@ -61,7 +61,7 @@ router.post("/api/watson/delete/:id", function(req, res) {
 });
 
 // route for home page
-router.get('/', function (req, res) {
+router.get('/auth', function (req, res) {
   res.render('auth'); // load the file
 });
 
