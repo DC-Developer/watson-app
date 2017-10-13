@@ -5,7 +5,7 @@ var LocalStrategy = require('passport-local').Strategy;
 
 var GoogleStrategy = require('passport-google-oauth2').Strategy;
 
-var configAuth = require('../googlekeys.js');
+// var configAuth = require('../googlekeys.js');
 
 // load up the user model
 // var User = require('../app/models/user');
@@ -69,9 +69,9 @@ module.exports = function (passport) {
     // =========================================================================
     passport.use(new GoogleStrategy({
 
-        clientID: configAuth.googleAuth.clientID,
-        clientSecret: configAuth.googleAuth.clientSecret,
-        callbackURL: configAuth.googleAuth.callbackURL,
+        clientID: clientID,
+        clientSecret: clientSecret,
+        callbackURL: callbackURL,
 
     },
         function (token, refreshToken, profile, done) {
