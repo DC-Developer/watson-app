@@ -8,7 +8,7 @@ var passport = require('passport');
 var watson = require("../models/watsonModel.js");
 
 // Create all our routes and set up logic within those routes where required.
-router.get("/search", function(req, res) {
+router.get("/", function(req, res) {
   watson.all(function(data) {
     var hbsObject = {
       watson: data,
@@ -65,6 +65,7 @@ router.get('/', function (req, res) {
   res.render('auth'); // load the file
 });
 
+
 // route for login form
 // route for processing the login form
 // route for signup form
@@ -105,8 +106,8 @@ router.get('/auth/google/callback',
 function isLoggedIn(req, res, next) {
 
   // if user is authenticated in the session, carry on
-  if (req.isAuthenticated()){
-    res.redirect('/search');}//return next();
+  if (req.isAuthenticated())
+      return next();//  //res.redirect('/search')
 
   // if they aren't redirect them to the home page
   res.redirect('/');
