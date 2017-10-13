@@ -24,6 +24,13 @@ app.set("view engine", "handlebars");
 // Import routes and give the server access to them.
 var router = require("./controllers/watsonController.js");
 
+//Watson API Related
+const log4js = require('log4js');
+const discovery = require('./public/assets/js/service-manager').get('watson-discovery');
+const logger = log4js.getLogger(appName);
+const serviceManager = require('./public/assets/js/service-manager');
+require('./public/assets/js/index')(app);
+
 app.use("/", router);
 
 app.listen(PORT, function() {
