@@ -3,18 +3,18 @@ var orm = require("../config/orm.js");
 
 var watson = {
   all: function(cb) {
-    orm.all("test", function(res) {
+    orm.all("topics", function(res) {
       cb(res);
     });
   },
   // The variables cols and vals are arrays.
   create: function(cols, vals, cb) {
-    orm.create("test", cols, vals, function(res) {
+    orm.create("topics", cols, vals, function(res) {
       cb(res);
     });
   },
   update: function(objColVals, condition, cb) {
-    orm.update("test", objColVals, condition, function(res) {
+    orm.update("topics", objColVals, condition, function(res) {
       cb(res);
     });
   },
